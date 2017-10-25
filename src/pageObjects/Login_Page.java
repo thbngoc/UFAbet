@@ -6,7 +6,9 @@ import org.openqa.selenium.WebDriver;
 
 import org.openqa.selenium.WebElement;
 
+
 import utilities.Utility;
+
 
 
 
@@ -18,8 +20,9 @@ public class Login_Page {
 	//Get the Selenium Web Element for User Name text box
 	public static WebElement txt_UserName(WebDriver driver){
 		
-		Utility.waitForElement(driver, "id", "username", utilities.Constant.pollingValue,utilities.Constant.timedOutVale );
+		Utility.waitForElement(driver, "id", "username", utilities.Constant.pollingValue,utilities.Constant.timedOutValue);
 		element = driver.findElement(By.id("username"));
+		
 
 		return element;
 	 
@@ -28,9 +31,10 @@ public class Login_Page {
 	//Get the Selenium Web Element for Password text box
 	public static WebElement txt_Password(WebDriver driver){
 		
-		Utility.waitForElement(driver, "xpath", "//input[@type='password']", utilities.Constant.pollingValue,utilities.Constant.timedOutVale );
+		Utility.waitForElement(driver, "xpath", "//input[@type='password']", utilities.Constant.pollingValue,utilities.Constant.timedOutValue);
 		element = driver.findElement(By.xpath("//input[@type='password']"));
-	 
+		
+
 	    return element;
 	 
 	    }
@@ -38,9 +42,9 @@ public class Login_Page {
 		public static WebElement btn_Login(WebDriver driver){
 			 
 			
-			Utility.waitForElement(driver, "linkText", "Login", utilities.Constant.pollingValue,utilities.Constant.timedOutVale );
+			Utility.waitForElement(driver, "linkText", "Login", utilities.Constant.pollingValue,utilities.Constant.timedOutValue);
 			element = driver.findElement(By.linkText("Login"));
-		 
+
 		    return element;
 		 
 		}

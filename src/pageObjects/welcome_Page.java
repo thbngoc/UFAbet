@@ -6,6 +6,7 @@ import org.openqa.selenium.WebDriver;
 
 import org.openqa.selenium.WebElement;
 
+
 import utilities.*;
 
 public class welcome_Page {
@@ -15,11 +16,10 @@ public class welcome_Page {
 		//Get the Selenium Web Element for Agree Button
 		public static WebElement btn_Agree(WebDriver driver){
 			
-			
-			Utility.waitForElement(driver, "linkText", "Agree", utilities.Constant.pollingValue,utilities.Constant.timedOutVale );
+			Utility.waitForElement(driver, "linkText", "Agree", utilities.Constant.pollingValue,utilities.Constant.timedOutValue);
 			
 			element = driver.findElement(By.linkText("Agree"));
-			 
+
 		    return element;
 		 
 		    }

@@ -7,9 +7,10 @@ import org.testng.Assert;
 import org.openqa.selenium.WebDriver;
 import pageObjects.Home_Page;
 import appModule.*;
-import org.openqa.selenium.Alert;
+//import org.openqa.selenium.Alert;
 import utilities.Constant;
 
+//Push Date: 2:45PM (Viet Nam time), 25-Oct-2017 by Ngoc
 public class TC_VerifySoccerBet {
 	private static WebDriver driver;
 
@@ -23,28 +24,31 @@ public class TC_VerifySoccerBet {
 		Home_Page.txt_Amount(driver).sendKeys("10");
 		
 		//verify the Max Payout value is correct. Temporary down due to 'There is an unavailable game' message.
-		//Assert.assertTrue(assertHandler.assertMaxPayout(driver, 10)); 
-		Home_Page.btn_ProcessBet(driver).click();
-
-		//Wait for 5 secs and click on 'Accept' button under the Alert
 		try {
-			Thread.sleep(4000);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		Assert.assertTrue(assertHandler.assertMaxPayout(driver, 10)); 
+		} catch (AssertionError e) {
+			System.out.println("Failed test case: " + e.getMessage());
+		}
+		
+		Home_Page.btn_ProcessBet(driver).click();
+		
+		if (Home_Page.alt_Alert(driver).getText()== "ACCEPTED!") 
+			
+			System.out.println("Bet Accepted");
+			
+		else {
+			//do something else
+			System.out.println("Something Wrong");
+			System.out.println(Home_Page.alt_Alert(driver).getText());
 		}
 
-		//Click on the 'OK' button on the Alert
-		Alert a = driver.switchTo().alert();
-		a.accept();
-
-		//Wait for 5 secs (to see the result)
 		try {
 			Thread.sleep(5000);
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
 
 	}
 	@BeforeMethod

@@ -1,0 +1,8 @@
+<suite name="UFA Bet Test Suite">
+	<test name="VerifyBet">
+		<classes>
+			<class name="testCases.TC_VerifySoccerBet">
+			</class>
+		</classes>
+	</test>
+</suite>

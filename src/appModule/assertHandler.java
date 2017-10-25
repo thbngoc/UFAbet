@@ -10,15 +10,22 @@ public class assertHandler {
 		
 		WebElement lbl_MaxPayout = Home_Page.lbl_MaxPayout(driver);
 		WebElement lbl_betRatio = Home_Page.lbl_betRatio(driver);
-		double expectedMaxPayout = inputAmount * Double.parseDouble(lbl_betRatio.getText()); //get the value of Bet Ratio
-		double actualMaxPayout = Double.parseDouble(lbl_MaxPayout.getText());
-		int compareResult = Double.compare(actualMaxPayout, expectedMaxPayout);
+		Double dblBetRatio = Double.parseDouble(lbl_betRatio.getText());
 		
-		if (compareResult == 0 )
-			return true;
-		else
+		//check if the Bet Ratio is positive number
+		if (dblBetRatio>0) {
+			double expectedMaxPayout = inputAmount * Double.parseDouble(lbl_betRatio.getText()); //get the value of Bet Ratio
+			double actualMaxPayout = Double.parseDouble(lbl_MaxPayout.getText());
+			int compareResult = Double.compare(actualMaxPayout, expectedMaxPayout);
+			
+			if (compareResult == 0 )
+				return true;
+			else
+				return false;
+		}
+		else //Bet Ratio <= 0
+			System.out.println("Bet Ration is not negative number");
 			return false;
-		
 		
 	}
 
